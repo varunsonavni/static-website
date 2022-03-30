@@ -21,7 +21,8 @@ jobs:
   # uses: aws-actions/setup-sam@0578b2f57e540e67233c3ce0c5477ee36938ff3d
         run: aws --version
       - run: aws s3 ls
-      - run: aws s3 sync . ${{ secrets.AWS_S3_BUCKET }}
+      - run: pwd
+#       - run: aws s3 sync . ${{ secrets.AWS_S3_BUCKET }}
         env:
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
           AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
