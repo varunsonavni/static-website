@@ -27,7 +27,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/master'
     steps:
     - uses: actions/checkout@main
     - uses: jakejarvis/s3-sync-action@master
