@@ -15,8 +15,13 @@ jobs:
   install:
     runs-on: ubuntu-latest
     steps:
-      - uses: aws-actions/setup-sam@v1
-      - uses: mostlytyped/s3-put-action@v1.0.0
+      - uses: aws-actions/setup-sam@v1        
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
+          AWS_REGION: ${{ secrets.DEFAULT_REGION }}   # optional: defaults to us-east-1
+      
       - name: Setup AWS SAM CLI
   # You may pin to the exact commit or the version.
   # uses: aws-actions/setup-sam@0578b2f57e540e67233c3ce0c5477ee36938ff3d
@@ -24,11 +29,4 @@ jobs:
           aws --version
           aws s3 ls
           pwd
- 
-          
-        
-        env:
-          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
-          AWS_REGION: ${{ secrets.DEFAULT_REGION }}   # optional: defaults to us-east-1
+          aws s3 sync ./public/ s3://gitlab-website001-staging --delete
