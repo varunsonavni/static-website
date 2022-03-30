@@ -7,13 +7,13 @@ on:
 
 jobs:
   stage:
-    runs-on: ubuntu-20.04
-    # if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
     steps:
     - uses: actions/checkout@main
-    # - uses: jakejarvis/s3-sync-action@master
-    #   with:
-    #     args: --acl public-read --follow-symlinks --delete
+    - uses: jakejarvis/s3-sync-action@master
+      with:
+        args: --acl public-read --follow-symlinks --delete
       env:
         AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
         AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
@@ -23,7 +23,6 @@ jobs:
     - run: |
         apt install awscli
         pwd
-        aws s3 cp index.html s3://gitlab-website001-staging
         ls
         echo ${{ github.ref }}
 
