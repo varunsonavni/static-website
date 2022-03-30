@@ -22,7 +22,9 @@ jobs:
         run: |
           aws --version
           aws s3 ls
-          aws s3 sync . ${{ secrets.AWS_S3_BUCKET }}
+          pwd
+          ls
+          
         
         env:
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
