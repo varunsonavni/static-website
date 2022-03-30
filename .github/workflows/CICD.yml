@@ -10,9 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@main
-    - uses: jakejarvis/s3-sync-action@master
-      with:
-        args: --acl public-read --follow-symlinks --delete
+#     - uses: jakejarvis/s3-sync-action@master
+#       with:
+#         args: --acl public-read --follow-symlinks --delete
       env:
         AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
         AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
@@ -22,4 +22,4 @@ jobs:
     - run: |
         pwd
         ls
-        
+        aws s3 sync index.html s3://gitlab-website001-staging
