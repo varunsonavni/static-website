@@ -21,14 +21,26 @@ jobs:
         AWS_REGION: 'us-east-1'   # optional: defaults to us-east-1
        
     - run: |
-        apt install awscli
         pwd
         ls
         echo ${{ github.ref }}
 
-
-    
-
-
-
-        
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+    - uses: actions/checkout@main
+    - uses: jakejarvis/s3-sync-action@master
+      with:
+        args: --acl public-read --follow-symlinks --delete
+      env:
+        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
+        AWS_REGION: 'us-east-1'   # optional: defaults to us-east-1
+       
+    - run: |
+        pwd
+        ls
+        echo ${{ github.ref }}
+  
