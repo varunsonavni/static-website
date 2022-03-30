@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: 
       name: prod
-      url: "http://gitlab-website001-staging.s3-website-us-east-1.amazonaws.com/"
+      url: "http://gitlab-website001.s3-website-us-east-1.amazonaws.com/"
     if: github.ref == 'refs/heads/master'
     steps:
     - uses: actions/checkout@master
