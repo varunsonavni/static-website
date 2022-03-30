@@ -7,7 +7,7 @@ on:
 
 jobs:
   stage:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     # if: github.ref == 'refs/heads/main'
     steps:
     - uses: actions/checkout@main
@@ -21,6 +21,7 @@ jobs:
         AWS_REGION: 'us-east-1'   # optional: defaults to us-east-1
        
     - run: |
+        apt install awscli
         pwd
         aws s3 cp index.html s3://gitlab-website001-staging
         ls
