@@ -8,7 +8,7 @@ on:
 jobs:
   stage:
     runs-on: ubuntu-18.04
-    if: github.ref == 'refs/heads/main'
+    # if: github.ref == 'refs/heads/main'
     steps:
     - uses: actions/checkout@main
     # - uses: jakejarvis/s3-sync-action@master
