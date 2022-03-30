@@ -23,7 +23,9 @@ jobs:
           aws --version
           aws s3 ls
           pwd
-          ls
+        
+      - name: ls
+        run: ls
           
         
         env:
