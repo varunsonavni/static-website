@@ -29,4 +29,3 @@ jobs:
           aws --version
           aws s3 ls
           pwd
-          aws s3 sync index.html s3://gitlab-website001-staging --delete
