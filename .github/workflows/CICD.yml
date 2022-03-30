@@ -22,4 +22,4 @@ jobs:
     - run: |
         pwd
         ls
-        aws s3 sync index.html gitlab-website001-staging
+        aws s3 -acl public-read --follow-symlinks --delete
