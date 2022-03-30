@@ -9,6 +9,10 @@ on:
 jobs:
   stage:
     runs-on: ubuntu-latest
+    environment: 
+      name: stagee
+      url: "http://gitlab-website001-staging.s3-website-us-east-1.amazonaws.com/"
+    
     if: github.ref == 'refs/heads/main'
     steps:
     - uses: actions/checkout@main
@@ -28,6 +32,9 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
+    environment: 
+      name: prod
+      url: "http://gitlab-website001-staging.s3-website-us-east-1.amazonaws.com/"
     if: github.ref == 'refs/heads/master'
     steps:
     - uses: actions/checkout@master
